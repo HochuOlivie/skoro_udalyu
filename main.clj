@@ -97,7 +97,7 @@
                 (let [r (:tickets (get (get (:forward route-map) (first p)) (second p)))] ; берем количество билетов
                   (do
                     (alter r dec)              ; уменьшаем количество билетов на 1
-                    (recur (next p)))))))      ; берем хвост кратчайшеего пути
+                    (recur (next p)))))))      ; берем хвост кратчайшеего пути, делаем рекурсию, где снова апдейтим билеты, но уже в следующей точке
           {:path (second path), :price (first path)} ; возвращаем путь и стоимость
           (catch Exception e {:error e})))))
 
